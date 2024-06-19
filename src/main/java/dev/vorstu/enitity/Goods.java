@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -40,10 +39,8 @@ public class Goods {
     @Column(name = "imageUrl")
     private  String imageUrl;
 
+    @ManyToMany(mappedBy = "goodsList")
+    private Set<OrderItem> orderItemsList = new HashSet<>();
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "categories_id", nullable = false)
-//    private Categories categories;
-//    @OneToMany(mappedBy = "goods", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Image> images;
+
 }

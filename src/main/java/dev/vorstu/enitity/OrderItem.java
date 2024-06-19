@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Table (name = "ordersItem")
@@ -18,15 +21,16 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "order_id", nullable = false)
-//    private Orders orders;
-
-//    @ManyToOne
-//    @JoinColumn(name = "goods_id", nullable = false)
-//    private Goods goods;
-
     private int quantity;
+
     private Double price;
+
+    @ManyToMany
+    @JoinTable(
+            name = "orders_items_goods",
+            joinColumns = @JoinColumn(name = "orders_items_id"),
+            inverseJoinColumns = @JoinColumn(name = "goods_id")
+    )
+    private Set<Goods> goodsList = new HashSet<>();
 
 }

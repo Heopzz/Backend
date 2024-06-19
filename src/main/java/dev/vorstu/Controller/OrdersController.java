@@ -42,27 +42,12 @@ public class OrdersController {
         }
     }
 
-//    @PostMapping("/create")
-//    public ResponseEntity<Orders> create(@PathVariable Long id, @RequestBody Orders orders) {
-//        Orders savedOrder = orderService.save(orders);
-//        return ResponseEntity.status(201).body(savedOrder);
-//    }
-
     @PostMapping("/create/{id}")
     public ResponseEntity<Orders> createOrder(@PathVariable("id") Long userId,  @RequestBody Orders orders) {
         Orders savedOrders = orderService.saveOrder(orders, userId);
         return ResponseEntity.ok(savedOrders);
 
     }
-
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<Orders> update(@PathVariable Long id, @RequestBody Orders orders) {
-//        if (!orderService.findById(id).isPresent()) {
-//            return  ResponseEntity.notFound().build();
-//        }
-//        orders.setId(id);
-//        return ResponseEntity.ok(orderService.saveOrder(orders));
-//    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

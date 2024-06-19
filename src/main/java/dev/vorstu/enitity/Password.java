@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
@@ -18,7 +19,8 @@ import javax.persistence.*;
 
 public class Password {
 
-    static BCryptPasswordEncoder passwordEncoder =new BCryptPasswordEncoder();
+    @Autowired
+    static BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
     public Password(String password) { this.password = passwordEncoder.encode(password); }

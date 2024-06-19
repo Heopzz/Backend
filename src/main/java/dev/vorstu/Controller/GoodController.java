@@ -21,17 +21,6 @@ public class GoodController {
     private GoodsService goodsService;
 
 
-//    @GetMapping("/categories/{categoriesId}")
-//    public ResponseEntity<List<Goods>> getGoodsByCategories(@PathVariable Long categoriesId) {
-//        List<Goods> goods = goodsService.findByCategoriesId(categoriesId);
-//        if (goods.isEmpty()) {
-//            return ResponseEntity.noContent().build();
-//        }
-//        else {
-//            return ResponseEntity.ok(goods);
-//        }
-//    }
-
     @GetMapping("/search")
     public ResponseEntity<List<Goods>> searchGoods(@RequestParam String query) {
         List<Goods> goods = goodsService.searchGoods(query);

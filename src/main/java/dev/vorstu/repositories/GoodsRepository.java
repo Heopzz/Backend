@@ -12,7 +12,6 @@ public interface GoodsRepository extends JpaRepository<Goods, Long>  {
 
     List<Goods> findByNameContainingIgnoreCase(String name);
 
-//List<Goods> findByCategoriesId(Long categoriesId);
 
 @Query("SELECT p FROM Goods p")
     List<Goods> getAllGoods();
